@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Education Platform</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: #2575fc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            border-top: 1px solid #ddd;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion-header {
+            background-color: #e0f7fa;
+            padding: 15px 20px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #b2ebf2;
+        }
+
+        .accordion-header h2 {
+            font-size: 1.8em;
+            color: #2575fc;
+            display: inline-block;
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-size: 1.5em;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #f9f9f9;
+            padding: 0 20px;
+        }
+
+        .accordion-content.open {
+            max-height: 1000px; /* arbitrary high value */
+            padding: 20px;
+        }
+
+        .accordion-content p {
+            margin-bottom: 15px;
+        }
+
+        .accordion-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .accordion-content ul li {
+            background: #e0f7fa;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-left: 5px solid #2575fc;
+            border-radius: 4px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .accordion-content ul li:hover {
+            transform: translateX(5px);
+            background: #b2ebf2;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2575fc;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        footer .back-to-top {
+            display: inline-block;
+            margin-top: 10px;
+            background: #ff4081;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        footer .back-to-top:hover {
+            background: #e91e63;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .accordion-header h2 {
+                font-size: 1.5em;
+            }
+
+            .btn, footer .back-to-top {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .accordion-header h2 {
+                font-size: 1.3em;
+            }
+
+            .btn, footer .back-to-top {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Accessible Education Platform</h1>
+        <p>Bridging the information gap for students through inclusive networking, coaching, and mentorship.</p>
+        <a href="#signup" class="btn">Get Started</a>
+    </header>
+
+    <div class="container">
+
+        <div class="accordion">
+
+            <!-- Background Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>Background</h2>
+                </div>
+                <div class="accordion-content">
+                    <p>There are significant information gaps for underprivileged students, especially concerning school career planning. Additionally, the young generation lacks an inclusive networking, coaching, and mentorship platform that caters to their diverse needs.</p>
+                    <a href="#learn-more" class="btn">Learn More</a>
+                </div>
+            </div>
+
+            <!-- SDGs Fulfilled Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>SDGs Fulfilled</h2>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>4. Quality Education:</strong> Ensuring inclusive and equitable quality education for all.</li>
+                        <li><strong>8. Decent Work and Economic Growth:</strong> Promoting sustained, inclusive economic growth.</li>
+                        <li><strong>10. Reduced Inequalities:</strong> Reducing inequality within and among countries.</li>
+                        <li><strong>11. Sustainable Cities and Communities:</strong> Making cities inclusive, safe, resilient, and sustainable.</li>
+                    </ul>
+                    <a href="#impact" class="btn">Our Impact</a>
+                </div>
+            </div>
+
+            <!-- Market Demand Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>Market Demand and Pain Points</h2>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Information Asymmetry:</strong> Young individuals seeking career development advice, support, and networks often face challenges due to a lack of accessible resources and guidance. This platform aims to bridge that gap by providing tailored support and connections.</p>
+                    <a href="#solutions" class="btn">Explore Solutions</a>
+                </div>
+            </div>
+
+            <!-- Key Features Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>Key Features</h2>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Resources Cloud Platform:</strong> Matches students with college and education planning counselors based on their academic performance, financial capacity, career goals, and overseas studying options.</li>
+                        <li><strong>Counselors Profiles:</strong> Detailed profiles for counselors including their qualifications, experience, and user reviews.</li>
+                        <li><strong>User Reviews & Ratings:</strong> Enables students to review and rate their counselors to ensure quality and reliability.</li>
+                        <li><strong>Community Forum:</strong> A space for students to connect, share experiences, and seek advice from peers and mentors.</li>
+                    </ul>
+                    <a href="#features" class="btn">Discover Features</a>
+                </div>
+            </div>
+
+            <!-- Revenue Model Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>Revenue Model</h2>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Commission for Matching:</strong> A fee charged for successfully matching students with counselors.</li>
+                        <li><strong>Platform Premium Fee:</strong> Subscription fees for premium features and enhanced access within the platform.</li>
+                    </ul>
+                    <a href="#pricing" class="btn">View Pricing</a>
+                </div>
+            </div>
+
+            <!-- Sustainability Section -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h2>Sustainability</h2>
+                </div>
+                <div class="accordion-content">
+                    <p>The platform ensures sustainability through low marginal costs, allowing scalability and the continued delivery of services without significant incremental expenses. This ensures long-term viability and the ability to impact a larger number of students effectively.</p>
+                    <a href="#sustainability-details" class="btn">Learn About Sustainability</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Accessible Education Platform. All rights reserved.</p>
+        <a href="#header" class="back-to-top">Back to Top</a>
+    </footer>
+
+    <script>
+        // JavaScript to handle accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Toggle active class
+                    header.classList.toggle('active');
+
+                    // Toggle the associated content
+                    const content = header.nextElementSibling;
+                    if (header.classList.contains('active')) {
+                        content.classList.add('open');
+                    } else {
+                        content.classList.remove('open');
+                    }
+
+                    // Optional: Close other open sections
+                    /*
+                    accordionHeaders.forEach(otherHeader => {
+                        if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.classList.remove('open');
+                        }
+                    });
+                    */
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
