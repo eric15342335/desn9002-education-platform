@@ -178,18 +178,18 @@
             transform: scale(1.05);
         }
 
-        /* Responsive Design */
+        /* Mobile Accessibility Enhancements */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em;
+            .feature-section {
+                padding: 15px;
             }
-
-            .accordion-header h2 {
-                font-size: 1.5em;
+            .profile-card,
+            .learning-path {
+                width: 100%;
+                margin: 10px 0;
             }
-
-            .btn, footer .back-to-top {
-                padding: 8px 16px;
+            .stats {
+                flex-direction: column;
             }
         }
 
@@ -197,15 +197,235 @@
             header h1 {
                 font-size: 2em;
             }
-
-            .accordion-header h2 {
-                font-size: 1.3em;
+            .feature-section h2 {
+                font-size: 1.5em;
             }
-
-            .btn, footer .back-to-top {
-                padding: 6px 12px;
-                font-size: 0.9em;
+            .btn {
+                width: 100%;
+                padding: 10px 0;
             }
+        }
+
+        /* CSS */
+        .registration-form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* CSS */
+        .dashboard {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Resources Cloud Platform Styles */
+        .feature-section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+        }
+        #matchForm label {
+            display: block;
+            margin-top: 10px;
+        }
+        #matchForm select,
+        #matchForm input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #matchResults {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Counselors Profiles Styles */
+        .profile-card {
+            display: inline-block;
+            width: 45%;
+            margin: 10px 2.5%;
+            padding: 15px;
+            background-color: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-card h3 {
+            margin-top: 10px;
+            color: #ff9800;
+        }
+        .profile-card p {
+            margin: 5px 0;
+        }
+
+        /* User Reviews & Ratings Styles */
+        #reviewForm label {
+            display: block;
+            margin-top: 10px;
+        }
+        #reviewForm select,
+        #reviewForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #reviewsList {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fffde7;
+            border: 1px solid #ffee58;
+            border-radius: 4px;
+        }
+        .review {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #fff176;
+        }
+        .review p {
+            margin: 5px 0;
+        }
+
+        /* Community Forum Styles */
+        .forum-post {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+        }
+        .forum-post h3 {
+            color: #1e88e5;
+        }
+        .responses {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid #64b5f6;
+        }
+        .responses p {
+            margin: 5px 0;
+        }
+        #forumForm {
+            margin-top: 20px;
+        }
+        #forumForm label {
+            display: block;
+            margin-top: 10px;
+        }
+        #forumForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Personalized Learning Paths Styles */
+        .learning-path {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ede7f6;
+            border: 1px solid #b39ddb;
+            border-radius: 8px;
+        }
+        .learning-path h3 {
+            color: #8e24aa;
+        }
+        .learning-path ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        /* Live Webinars and Workshops Styles */
+        .webinar {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 8px;
+        }
+        .webinar h3 {
+            color: #ffb300;
+        }
+        .webinar p {
+            margin: 5px 0;
+        }
+
+        /* Progress Tracking Styles */
+        .progress-container {
+            margin-top: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress {
+            height: 20px;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            border-radius: 25px 0 0 25px;
         }
     </style>
 </head>
@@ -302,6 +522,107 @@
 
         </div>
 
+        <div class="registration-form">
+            <h2>Register</h2>
+            <form id="registrationForm">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+                
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Users Registered</h3>
+                    <p id="userCount">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Courses Available</h3>
+                    <p>10</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Cloud Platform Section -->
+        <div class="feature-section" id="resources-cloud-platform">
+            <h2>Resources Cloud Platform</h2>
+            <form id="matchForm">
+                <label for="academicPerformance">Academic Performance:</label>
+                <select id="academicPerformance" name="academicPerformance" required>
+                    <option value="">Select</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+
+                <label for="financialCapacity">Financial Capacity:</label>
+                <select id="financialCapacity" name="financialCapacity" required>
+                    <option value="">Select</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+
+                <label for="careerGoals">Career Goals:</label>
+                <input type="text" id="careerGoals" name="careerGoals" required>
+
+                <label for="overseasOptions">Overseas Studying Options:</label>
+                <input type="text" id="overseasOptions" name="overseasOptions" required>
+
+                <button type="submit" class="btn">Find Counselors</button>
+            </form>
+            <div id="matchResults"></div>
+        </div>
+
+    </div>
+
+    <!-- Counselors Profiles Section -->
+    <div class="feature-section" id="counselors-profiles">
+        <h2>Counselors Profiles</h2>
+        <div class="profile-card">
+            <img src="counselor1.jpg" alt="John Doe">
+            <h3>John Doe</h3>
+            <p><strong>Qualifications:</strong> M.Sc. in Computer Science</p>
+            <p><strong>Experience:</strong> 10 years in education counseling</p>
+            <p><strong>Reviews:</strong> ★★★★☆</p>
+        </div>
+        <div class="profile-card">
+            <img src="counselor2.jpg" alt="Jane Smith">
+            <h3>Jane Smith</h3>
+            <p><strong>Qualifications:</strong> M.B.A.</p>
+            <p><strong>Experience:</strong> 8 years in business coaching</p>
+            <p><strong>Reviews:</strong> ★★★★★</p>
+        </div>
+        <!-- Add more profiles as needed -->
+    </div>
+
+    <!-- Community Forum Section -->
+    <div class="feature-section" id="community-forum">
+        <h2>Community Forum</h2>
+        <div class="forum-post">
+            <h3>How to choose the right major?</h3>
+            <p>I'm confused about selecting a major. Any advice?</p>
+            <div class="responses">
+                <p><strong>John Doe:</strong> Assess your interests and strengths, and consider future career opportunities.</p>
+                <p><strong>Jane Smith:</strong> Don't hesitate to reach out to a counselor for personalized guidance.</p>
+            </div>
+        </div>
+        <form id="forumForm">
+            <h3>Post a New Question</h3>
+            <label for="question">Question:</label>
+            <textarea id="question" name="question" rows="3" required></textarea>
+
+            <button type="submit" class="btn">Post Question</button>
+        </form>
     </div>
 
     <footer>
@@ -338,6 +659,53 @@
                     */
                 });
             });
+        });
+
+        // Resources Cloud Platform JavaScript
+        document.getElementById('matchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Mock matching logic
+            const results = `
+                <h3>Matched Counselors:</h3>
+                <ul>
+                    <li>John Doe - Expert in Computer Science</li>
+                    <li>Jane Smith - Specialist in Business Studies</li>
+                </ul>
+            `;
+            document.getElementById('matchResults').innerHTML = results;
+        });
+
+        // User Reviews & Ratings JavaScript
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const counselor = document.getElementById('counselor').value;
+            const rating = document.getElementById('rating').value;
+            const comment = document.getElementById('comment').value;
+
+            const newReview = `
+                <div class="review">
+                    <p><strong>${counselor}:</strong> ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</p>
+                    <p>${comment}</p>
+                </div>
+            `;
+            document.getElementById('reviewsList').innerHTML += newReview;
+            document.getElementById('reviewForm').reset();
+        });
+
+        // Community Forum JavaScript
+        document.getElementById('forumForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+
+            const newPost = `
+                <div class="forum-post">
+                    <h3>${question}</h3>
+                    <p>Awaiting responses...</p>
+                    <div class="responses"></div>
+                </div>
+            `;
+            document.querySelector('#community-forum').insertAdjacentHTML('beforeend', newPost);
+            document.getElementById('forumForm').reset();
         });
     </script>
 
