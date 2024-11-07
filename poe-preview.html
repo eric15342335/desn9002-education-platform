@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consultant Finder</title>
+  <style>
+    /* Light theme with slight modifications */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eef2f5; /* Light gray background */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Fixed height for both sections to avoid layout shifting */
+    .form-section, .consultants-list {
+      height: 90vh;
+    }
+
+    .form-section {
+      flex: 0 0 350px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: #007bff; /* Blue accent */
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95em;
+      color: #333;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.95em;
+      box-sizing: border-box;
+    }
+
+    .form-group button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .form-group button:hover {
+      background-color: #218838;
+    }
+
+    .consultants-list {
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+      display: grid;
+      grid-template-columns: 1fr; /* One full-width row per item */
+      gap: 15px;
+      overflow-y: auto;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Loading screen */
+    .loading-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .loading-screen.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .loading-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #007bff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .consultant {
+      padding: 15px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 0.5s forwards ease;
+      box-sizing: border-box;
+    }
+
+    /* Fade-in from below animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .consultant img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .consultant-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .consultant h3 {
+      margin: 0;
+      font-size: 1.1em;
+      color: #007bff;
+    }
+
+    .consultant p {
+      margin: 0;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .consultants-list {
+        grid-template-columns: 1fr; /* Still one column on smaller screens */
+      }
+    }
+
+    @media (max-width: 500px) {
+      .consultants-list {
+        grid-template-columns: 1fr; /* Still one column on very small screens */
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async fetchpriority="low"
+    src="https://www.googletagmanager.com/gtag/js?id=G-V187TY0SPN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V187TY0SPN', {
+      'cookie_flags': 'SameSite=None; Secure',
+      'cookie_domain': 'eric15342335.github.io'
+    });
+  </script>
+  <!-- End Google Analytics -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      t.setAttribute('fetchpriority', 'low');
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "o9poktpwjv");
+  </script>
+  <!-- End Microsoft Clarity -->
+
+  <!-- GoatCounter -->
+  <script async fetchpriority="low"
+    data-goatcounter="https://eric310.goatcounter.com/count"
+    src="/src/thirdparty/count.js"></script>
+  <!-- End GoatCounter -->
+</head>
+<body>
+  <div class="container">
+    <!-- Form Section -->
+    <div class="form-section">
+      <h2>Find a Consultant</h2>
+      <form id="consultantForm">
+        <div class="form-group">
+          <label for="sector">Sector:</label>
+          <select id="sector" required="">
+            <option value="" disabled="" selected="">Select sector</option>
+            <option value="finance">Finance</option>
+            <option value="it">IT</option>
+            <option value="medicine">Medicine</option>
+            <option value="education">Education</option>
+            <option value="law">Law</option>
+            <option value="marketing">Marketing</option>
+            <option value="engineering">Engineering</option>
+            <option value="human_resources">Human Resources</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="industry">Industry the Consultant is Working On:</label>
+          <select id="industry" required="">
+            <option value="" disabled="" selected="">Select industry</option>
+            <option value="investment_banking">Investment Banking</option>
+            <option value="software_development">Software Development</option>
+            <option value="clinical_research">Clinical Research</option>
+            <option value="higher_education">Higher Education</option>
+            <option value="corporate_law">Corporate Law</option>
+            <option value="digital_marketing">Digital Marketing</option>
+            <option value="civil_engineering">Civil Engineering</option>
+            <option value="talent_acquisition">Talent Acquisition</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" required="">
+            <option value="" disabled="" selected="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="both">Both/No Requirement</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="minExperience">Minimum Experience Level (in years):</label>
+          <input type="number" id="minExperience" min="1" required="">
+        </div>
+
+        <div class="form-group">
+          <label for="university">Which University (Hong Kong):</label>
+          <select id="university" required="">
+            <option value="" disabled="" selected="">Select university</option>
+            <option value="hku">The University of Hong Kong (HKU)</option>
+            <option value="cuhk">The Chinese University of Hong Kong (CUHK)</option>
+            <option value="ust">The Hong Kong University of Science and Technology (HKUST)</option>
+            <option value="polyu">The Hong Kong Polytechnic University (PolyU)</option>
+            <option value="cityu">City University of Hong Kong (CityU)</option>
+            <option value="hkbu">Hong Kong Baptist University (HKBU)</option>
+            <option value="lenu">Lingnan University (LU)</option>
+            <option value="edu">The Education University of Hong Kong (EdUHK)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Find Consultants</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Consultants Section -->
+    <div class="consultants-list" id="consultantsList">
+      <!-- Loading Screen -->
+      <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <!-- Consultants will be dynamically generated here -->
+    </div>
+  </div>
+
+  <script>
+    // Sample data for names and companies
+    const firstNames = ["John", "Mary", "Alex", "Sophia", "Michael", "Emma", "James", "Lily", "David", "Elaine", "Hans", "Anna", "Giovanni", "Maria", "Oliver", "Isabella", "William"];
+    const lastNames = ["Lee", "Chan", "Wong", "Tan", "Ho", "Li", "Ng", "Chan", "Cheung", "Leung", "Müller", "Schmidt", "Rossi", "Bianchi", "Brown", "Green", "Davis"];
+    const companies = ["ABC Consulting", "XYZ Education Services", "Future Path Consulting", "HealthFirst Advisors", "LegalEase Consulting", "Digital Dynamics", "Innovate Engineers", "TalentHub", "Global Finance Corp", "Tech Innovators", "Smart Health Consultants", "Learning Path Education", "LawPartners UK", "MarketReach", "Tech Innovators", "HealthCare Advisors"];
+
+    // Function to generate a random integer between min and max (inclusive)
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Function to generate a random consultant based on criteria
+    function generateConsultant(sector, industry, gender, minExperience, university) {
+      const name = `${firstNames[getRandomInt(0, firstNames.length - 1)]} ${lastNames[getRandomInt(0, lastNames.length - 1)]}`;
+      const company = companies[getRandomInt(0, companies.length - 1)];
+      const experience = getRandomInt(minExperience, minExperience + 10); // Experience >= minExperience
+      const age = experience + getRandomInt(20, 30); // Assuming starting age between 20-30
+      let consultantGender = gender;
+
+      // If gender is "both", assign a random gender
+      if (gender === "both") {
+        consultantGender = Math.random() > 0.5 ? "male" : "female";
+      }
+
+      return {
+        name,
+        company,
+        age,
+        experience,
+        gender: consultantGender,
+        sector,
+        industry,
+        university
+      };
+    }
+
+    // Function to create a consultant card
+    function createConsultantCard(consultant) {
+      const consultantDiv = document.createElement('div');
+      consultantDiv.classList.add('consultant');
+
+      const img = document.createElement('img');
+      img.src = consultant.gender === 'male' ? 'male.png' : 'female.png'; // Display gender image
+      img.alt = consultant.gender === 'male' ? 'Male' : 'Female';
+
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('consultant-content');
+
+      const name = document.createElement('h3');
+      name.textContent = consultant.name;
+
+      const company = document.createElement('p');
+      company.innerHTML = `<strong>Company:</strong> ${consultant.company}`;
+
+      const age = document.createElement('p');
+      age.innerHTML = `<strong>Age:</strong> ${consultant.age}`;
+
+      const experience = document.createElement('p');
+      experience.innerHTML = `<strong>Experience:</strong> ${consultant.experience} years`;
+
+      const uni = document.createElement('p');
+      const uniMap = {
+        'hku': 'The University of Hong Kong (HKU)',
+        'cuhk': 'The Chinese University of Hong Kong (CUHK)',
+        'ust': 'The Hong Kong University of Science and Technology (HKUST)',
+        'polyu': 'The Hong Kong Polytechnic University (PolyU)',
+        'cityu': 'City University of Hong Kong (CityU)',
+        'hkbu': 'Hong Kong Baptist University (HKBU)',
+        'lenu': 'Lingnan University (LU)',
+        'edu': 'The Education University of Hong Kong (EdUHK)'
+      };
+      uni.innerHTML = `<strong>University:</strong> ${uniMap[consultant.university] || consultant.university}`;
+
+      contentDiv.appendChild(name);
+      contentDiv.appendChild(company);
+      contentDiv.appendChild(age);
+      contentDiv.appendChild(experience);
+      contentDiv.appendChild(uni);
+
+      consultantDiv.appendChild(img);
+      consultantDiv.appendChild(contentDiv);
+
+      return consultantDiv;
+    }
+
+    // Handle form submission
+    const form = document.getElementById('consultantForm');
+    const consultantsList = document.getElementById('consultantsList');
+    const loadingScreen = document.getElementById('loadingScreen');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting normally
+
+      // Retrieve form values
+      const sector = document.getElementById('sector').value;
+      const industry = document.getElementById('industry').value;
+      const gender = document.getElementById('gender').value;
+      const minExperience = parseInt(document.getElementById('minExperience').value);
+      const university = document.getElementById('university').value;
+
+      // Show loading screen
+      loadingScreen.classList.add('visible');
+
+      // Simulate loading time
+      setTimeout(() => {
+        loadingScreen.classList.remove('visible');
+
+        // Clear previous results
+        consultantsList.innerHTML = ''; // Remove all existing consultants
+
+        // Generate a number of consultants based on criteria
+        const numberOfConsultants = getRandomInt(5, 10); // Generate between 5 to 10 consultants
+        const newConsultants = [];
+
+        for (let i = 0; i < numberOfConsultants; i++) {
+          const consultant = generateConsultant(sector, industry, gender, minExperience, university);
+          newConsultants.push(consultant);
+        }
+
+        // If no consultants are generated, display a message
+        if (newConsultants.length === 0) {
+          consultantsList.innerHTML = '<p>No consultants match your criteria.</p>';
+          return;
+        }
+
+        // Display generated consultants with animations
+        newConsultants.forEach((consultant, index) => {
+          const consultantCard = createConsultantCard(consultant);
+          consultantCard.style.animationDelay = `${index * 0.1}s`; // Stagger animations
+          consultantsList.appendChild(consultantCard);
+        });
+
+      }, 500); // Reduced loading delay to 0.5 seconds
+    });
+  </script>
+
+
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="404 Not Found - Page not available">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found - Page not available</title>
+
+  <meta http-equiv="refresh" content="10; url=/index.html">
+  <link rel="prefetch" href="/index.html">
+  <link rel="prefetch" href="/assets/font/Inter-latin.woff2">
+  <link rel="prefetch" href="/assets/style.css">
+  <link rel="prefetch" href="/src/script.js">
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async fetchpriority="low"
+    src="https://www.googletagmanager.com/gtag/js?id=G-V187TY0SPN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V187TY0SPN', {
+      'cookie_flags': 'SameSite=None; Secure',
+      'cookie_domain': 'eric15342335.github.io'
+    });
+  </script>
+  <!-- End Google Analytics -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      t.setAttribute('fetchpriority', 'low');
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "o9poktpwjv");
+  </script>
+  <!-- End Microsoft Clarity -->
+
+  <!-- GoatCounter -->
+  <script async fetchpriority="low"
+    data-goatcounter="https://eric310.goatcounter.com/count"
+    src="/src/thirdparty/count.js"></script>
+  <!-- End GoatCounter -->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Eric’s GitHub Pages | Webpage of eric15342335</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Eric’s GitHub Pages" />
+<meta name="author" content="Cheng Ho Ming, Eric" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Webpage of eric15342335" />
+<meta property="og:description" content="Webpage of eric15342335" />
+<link rel="canonical" href="http://localhost:4000/404.html" />
+<meta property="og:url" content="http://localhost:4000/404.html" />
+<meta property="og:site_name" content="Eric’s GitHub Pages" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Eric’s GitHub Pages" />
+<meta name="google-site-verification" content="nKhf3k5Ab3PBY31uGwwA-9csMaoM8j2T96heECb4RuM" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Cheng Ho Ming, Eric","url":"https://eric15342335.github.io/"},"description":"Webpage of eric15342335","headline":"Eric’s GitHub Pages","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/meguru-big.png"},"name":"Cheng Ho Ming, Eric"},"url":"http://localhost:4000/404.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #111;
+    }
+    .message {
+      text-align: center;
+      color: #eee;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .message p {
+      margin: 0.5em 0;
+    }
+    a {
+      color: #aaf;
+      text-decoration: underline;
+    }
+    a:hover, a:focus {
+      text-decoration: none;
+    }
+    #countdown {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    .animate {
+      animation: fadeInOut 1s infinite;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="message" role="alert">
+    <h1>404 Not Found</h1>
+    <p>We're sorry, but the page you're looking for cannot be found.</p>
+    <p>You will be redirected to the home page in <span id="countdown">10</span> seconds.</p>
+    <p>If you are not redirected automatically, please
+      <a href="/index.html" aria-label="Go to home page">
+        click here to go to the home page</a>.
+    </p>
+  </div>
+</main>
+
+<script>
+  let countdown = 10;
+  let countdownElement = document.getElementById('countdown');
+  let intervalId = setInterval(function() {
+    countdown--;
+    if (countdown <= 0) {
+      clearInterval(intervalId);
+      window.location.href = "/index.html";
+    } else {
+        countdownElement.textContent = countdown;
+        countdownElement.classList.remove('animate');
+        void countdownElement.offsetWidth; // Trigger reflow to restart animation
+        countdownElement.classList.add('animate');
+    }
+  }, 1000);
+</script>
+</body>
+</html>
