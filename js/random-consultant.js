@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             teacherButton.classList.add('active');
             studentButton.classList.remove('active');
-            universityLabel.textContent = "Which university are you teaching at?";
+            universityLabel.textContent = "Which university should your students know about?";
             examLabel.textContent = "What exam will your student take?";
             examSelect.options[0].textContent = "Select exam";
             subjectSelect.options[0].textContent = "Select subject";

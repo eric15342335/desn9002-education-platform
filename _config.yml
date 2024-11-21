@@ -1,5 +1,5 @@
 timezone: Asia/Hong_Kong
-url: https://eric15342335.github.io
+url: https://eric15342335.github.io/desn9002-education-platform
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
@@ -9,7 +9,7 @@ title: Eric's GitHub Pages
 author:
   name: Cheng Ho Ming, Eric
   email: eric310@connect.hku.hk
-  url: https://eric15342335.github.io/
+  url: https://eric15342335.github.io/desn9002-education-platform
   github: eric15342335
   twitter: eric15342335
 
