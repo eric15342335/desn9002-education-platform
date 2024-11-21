@@ -1,10 +1,3 @@
-@font-face {
-    src: url(https://eric15342335.github.io/desn9002-education-platform/font/InterVariable.woff2) format('woff2');
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-}
 body {
     font-family: 'Inter', -apple-system, sans-serif;
     margin: 0;
@@ -323,13 +316,15 @@ body {
     background-color: #0056b3;
 }
 
-/* Statistics Section */
+/* [css/styles.css](css/styles.css) */
+
 .stat {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     font-size: 16px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
@@ -338,10 +333,17 @@ body {
 
 .stat-title {
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .stat-number {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.stat-chart {
+    max-width: 100%;
+    height: 200px;
 }

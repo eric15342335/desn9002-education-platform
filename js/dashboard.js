@@ -1,6 +1,7 @@
 // Random Data Generators
+
 function getRandomName() {
-    const names = ["John Doe", "Jane Smith", "Alex Chan", "Emily Wong", "Michael Lee", "Sophia Ng"];
+    const names = ["Alice", "Bob", "Charlie", "Diana", "Ethan"];
     return names[Math.floor(Math.random() * names.length)];
 }
 
@@ -15,30 +16,90 @@ function getRandomEvent() {
 }
 
 function getRandomLocation() {
-    const locations = [
-        "Hong Kong", "Macau", "Taiwan", "China", 
-        "UK", "US"
-    ];
+    const locations = ["Hong Kong", "Macau", "Taiwan", "China", "UK", "US"];
     const weights = [0.5, 0.15, 0.15, 0.1, 0.05, 0.05];
     const random = Math.random();
     let cumulative = 0;
     for (let i = 0; i < locations.length; i++) {
         cumulative += weights[i];
-        if (random < cumulative) return locations[i];
+        if (random < cumulative)
+            return locations[i];
     }
-    return locations[0];
+    return locations[locations.length -1];
 }
 
 function getRandomAudience() {
-    return `${Math.floor(Math.random() * 50) + 10}-${Math.floor(Math.random() * 150) + 50}`;
+    const options = [10, 20, 50, 100, 200];
+    return options[Math.floor(Math.random() * options.length)];
 }
 
 function getRandomDuration() {
-    return Math.floor(Math.random() * 6) + 1;
+    return Math.floor(Math.random() * 6) + 1; // 1 to 6 hours
 }
 
 function getRandomPrice() {
-    return Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+    return (Math.floor(Math.random() * 100) + 50); // $50 - $149
+}
+
+// Store chart instances
+const charts = {};
+
+// Initialize Charts
+function initializeCharts() {
+    const stats = [
+        { id: 'registeredUsersChart', label: 'Registered Users', statId: 'registeredUsers' },
+        { id: 'registeredConsultantsChart', label: 'Registered Consultants', statId: 'registeredConsultants' },
+        { id: 'studentConversationsChart', label: 'Student Conversations', statId: 'studentConversations' },
+        { id: 'heldEventsChart', label: 'Successfully Held Events', statId: 'heldEvents' },
+    ];
+
+    stats.forEach(stat => {
+        const ctx = document.getElementById(stat.id).getContext('2d');
+        const data = generateRandomData(12);
+        charts[stat.id] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: getLast12Months(),
+                datasets: [{
+                    label: stat.label,
+                    data: data,
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false, // Prevents aspect ratio conflicts
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        // Update the stat-number with the latest data point
+        const latestValue = data[data.length - 1];
+        animateNumber(stat.statId, latestValue, 1000);
+    });
+}
+
+function getLast12Months() {
+    const months = [];
+    const date = new Date();
+    for (let i = 11; i >= 0; i--) {
+        const d = new Date(date.getFullYear(), date.getMonth() - i, 1);
+        months.push(d.toLocaleString('default', { month: 'short' }));
+    }
+    return months;
+}
+
+function generateRandomData(numPoints) {
+    const data = [];
+    for (let i = 0; i < numPoints; i++) {
+        data.push(Math.floor(Math.random() * 1000));
+    }
+    return data;
 }
 
 // Animate Number Increment
@@ -110,17 +171,30 @@ function addNotification() {
 
 // Initialize Dashboard
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM fully loaded and parsed");
+
     // Populate Statistics
     populateStatistics();
 
     // Add Initial Notifications
     const notificationList = document.getElementById("notifications");
+    if (!notificationList) {
+        console.error("Notifications container not found!");
+        return;
+    }
+    console.log("Adding initial notifications...");
     for (let i = 0; i < 3; i++) {
-        notificationList.appendChild(createNotification());
+        const notification = createNotification();
+        notificationList.appendChild(notification);
+        console.log("Added notification:", notification);
     }
 
     // Add a New Notification After 1 Second
     setTimeout(() => {
+        console.log("Adding a new notification after 1 second");
         addNotification();
     }, 1000);
+
+    // Initialize Charts
+    initializeCharts();
 });

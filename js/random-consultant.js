@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const randomName = names[Math.floor(Math.random() * names.length)];
             const randomGender = gender === "" ? (Math.random() > 0.5 ? "Male" : "Female") : gender;
             const randomExperience = Math.random() > 0.5 ? "Student" : `${Math.floor(Math.random() * 4) + 1} years`; // 1-4 years or Student
-            const randomPrice = userType === "teacher" ? Math.floor(Math.random() * 1901) + 100 : Math.floor(Math.random() * 9501) + 50; // Teachers: $100-$2000, Students: $50-$9550
+            const randomPrice = userType === "teacher" ? Math.floor(Math.random() * 3501) + 500 : Math.floor(Math.random() * 501); // Teachers: $500-$4000, Students: $0-$500
 
             // Match user criteria
             if (
