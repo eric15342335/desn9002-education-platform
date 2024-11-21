@@ -1,9 +1,101 @@
+---
+---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=poe-preview.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultant Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    {% seo %}
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="poe-preview.html">link</a>.</p>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section">
+            <h2>Consultant Finder</h2>
+            <div class="user-type">
+                <button id="studentButton" class="active" onclick="setUserType('student')">Student</button>
+                <button id="teacherButton" onclick="setUserType('teacher')">Teacher</button>
+            </div>
+            <div class="inputs">
+                <label id="universityLabel">Which university are you studying?</label>
+                <select id="university">
+                    <option value="" disabled>Select university</option>
+                    <option value="HKU" selected>The University of Hong Kong (HKU)</option>
+                    <option value="CUHK">The Chinese University of Hong Kong (CUHK)</option>
+                    <option value="HKUST">The Hong Kong University of Science and Technology (HKUST)</option>
+                    <option value="PolyU">The Hong Kong Polytechnic University (PolyU)</option>
+                    <option value="CityU">City University of Hong Kong (CityU)</option>
+                    <option value="HKBU">Hong Kong Baptist University (HKBU)</option>
+                    <option value="LU">Lingnan University (LU)</option>
+                    <option value="EdUHK">The Education University of Hong Kong (EdUHK)</option>
+                </select>
+
+                <label id="examLabel">What exam will you take?</label>
+                <select id="exam">
+                    <option value="" disabled>Select exam</option>
+                    <option value="HKDSE" selected>HKDSE</option>
+                    <option value="IB">IB</option>
+                    <option value="GCSE">GCSE</option>
+                    <option value="A-level">A-level</option>
+                </select>
+
+                <label>What subject are you looking for?</label>
+                <select id="subject">
+                    <option value="" disabled>Select subject</option>
+                    <option value="Science">Science</option>
+                    <option value="Statistical Science">Statistical Science</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Education">Education</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="English">English</option>
+                    <option value="History">History</option>
+                    <option value="Biology">Biology</option>
+                </select>
+
+                <label>Which country are you from?</label>
+                <select id="country">
+                    <option value="" disabled>Select country</option>
+                    <option value="Hong Kong" selected>Hong Kong</option>
+                    <option value="Macau">Macau</option>
+                    <option value="China">China</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Korea">Korea</option>
+                    <option value="UK">UK</option>
+                    <option value="Europe">Europe</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="South America">South America</option>
+                    <option value="Africa">Africa</option>
+                </select>
+
+                <label>Do you require an expert with education experience?</label>
+                <div class="education-experience">
+                    <button id="yesEducationButton" class="active" onclick="setEducationExperience('Yes')">Yes</button>
+                    <button id="noEducationButton" onclick="setEducationExperience('No')">No</button>
+                </div>
+
+                <button id="submit" onclick="findConsultants()">Submit</button>
+            </div>
+            <div class="footer">
+                &copy; Copyright Edbridge 2024
+            </div>
+        </div>
+
+        <!-- Display Section -->
+        <div class="display-section">
+            <div id="loader" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            <div id="consultants">
+                <!-- Consultants will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="random-consultant.js"></script>
 </body>
 </html>

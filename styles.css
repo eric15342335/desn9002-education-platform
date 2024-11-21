@@ -1,0 +1,245 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.input-section {
+    flex: 0 0 35%;
+    background-color: #f0f8ff; /* Light blue background */
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-section h2 {
+    margin-top: 0;
+}
+
+.user-type {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.user-type button {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.user-type button:last-child {
+    margin-right: 0;
+}
+
+.user-type button.active {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.inputs label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputs select,
+.inputs input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.education-experience {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.education-experience button {
+    flex: 1;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.education-experience button.active {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.inputs button#submit {
+    display: block;
+    margin: 0 auto;
+    padding: 0.7em;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 1em;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.inputs button#submit:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.display-section {
+    flex: 1;
+    background-color: #f0f8ff; /* Light blue background */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    position: relative;
+}
+
+.spinner {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #007BFF;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 10px; /* Add margin to separate from progress text */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.consultants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.consultant-card {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 15px;
+    flex: 1 1 calc(20% - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+    max-width: 200px;
+}
+
+.consultant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.consultant-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.consultant-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.consultant-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.pricing {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background-color: #FFD700; /* Yellow background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 5px 10px; /* Padding for the badge */
+    color: #000; /* Text color */
+    font-weight: bold; /* Bold text */
+    display: inline-block; /* Inline block display */
+    margin-bottom: 10px; /* Space below the badge */
+}
+
+.pricing button {
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pricing button:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.likes img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border-radius: 50%;
+}

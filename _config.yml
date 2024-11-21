@@ -1,0 +1,35 @@
+timezone: Asia/Hong_Kong
+url: https://eric15342335.github.io
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+title: Eric's GitHub Pages
+
+author:
+  name: Cheng Ho Ming, Eric
+  email: eric310@connect.hku.hk
+  url: https://eric15342335.github.io/
+  github: eric15342335
+  twitter: eric15342335
+
+social:
+  name: eric15342335
+  links:
+    - https://github.com/eric15342335
+    - https://www.linkedin.com/in/eric15342335/
+    - https://www.instagram.com/ericcheng0310/
+    - https://x.com/eric15342335/
+    - https://www.binance.com/en/square/profile/eric15342335
+    - https://steamcommunity.com/id/eric15342335
+
+twitter:
+  username: eric15342335
+  card: summary
+
+logo: /assets/images/meguru-big.png
+
+webmaster_verifications:
+  google: nKhf3k5Ab3PBY31uGwwA-9csMaoM8j2T96heECb4RuM
+
+theme: null

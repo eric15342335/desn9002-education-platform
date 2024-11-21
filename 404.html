@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 Not Found - Page not available</title>
 
-  <meta http-equiv="refresh" content="10; url=/index.html">
+  <noscript>
+    <meta http-equiv="refresh" content="10; url=/index.html">
+  </noscript>
   <link rel="prefetch" href="/index.html">
-  <link rel="prefetch" href="/assets/font/Inter-latin.woff2">
   <link rel="prefetch" href="/assets/style.css">
   <link rel="prefetch" href="/src/script.js">
 
@@ -32,7 +33,6 @@
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      t.setAttribute('fetchpriority', 'low');
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "o9poktpwjv");
   </script>
@@ -43,6 +43,10 @@
     data-goatcounter="https://eric310.goatcounter.com/count"
     src="/src/thirdparty/count.js"></script>
   <!-- End GoatCounter -->
+
+  <!-- Google AdSense -->
+  <script async fetchpriority="low" crossorigin="anonymous"
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1706655606350284"></script>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Eric’s GitHub Pages | Webpage of eric15342335</title>
@@ -58,40 +62,43 @@
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Eric’s GitHub Pages" />
+<meta name="twitter:site" content="@eric15342335" />
+<meta name="twitter:creator" content="@eric15342335" />
 <meta name="google-site-verification" content="nKhf3k5Ab3PBY31uGwwA-9csMaoM8j2T96heECb4RuM" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Cheng Ho Ming, Eric","url":"https://eric15342335.github.io/"},"description":"Webpage of eric15342335","headline":"Eric’s GitHub Pages","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/meguru-big.png"},"name":"Cheng Ho Ming, Eric"},"url":"http://localhost:4000/404.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Cheng Ho Ming, Eric","url":"https://eric15342335.github.io/"},"description":"Webpage of eric15342335","headline":"Eric’s GitHub Pages","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/meguru-big.png"},"name":"Cheng Ho Ming, Eric"},"url":"http://localhost:4000/404.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   <style>
+    @font-face {
+      src: url(/assets/font/Inter-latin.woff2) format('woff2'), url(/assets/font/Inter-latin.woff) format('woff');
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, 'Inter', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      margin: 0.5em 0;
       background-color: #111;
-    }
-    .message {
       text-align: center;
       color: #eee;
-      max-width: 600px;
-      padding: 20px;
-    }
-    .message p {
-      margin: 0.5em 0;
+      max-width: none;
+      font-size: 1.2em;
     }
     a {
       color: #aaf;
-      text-decoration: underline;
     }
     a:hover, a:focus {
-      text-decoration: none;
+      color: #eee;
+      transition: color 0.3s ease;
     }
     #countdown {
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
     }
     @keyframes fadeInOut {
@@ -105,15 +112,13 @@
 </head>
 <body>
 <main>
-  <div class="message" role="alert">
-    <h1>404 Not Found</h1>
-    <p>We're sorry, but the page you're looking for cannot be found.</p>
-    <p>You will be redirected to the home page in <span id="countdown">10</span> seconds.</p>
-    <p>If you are not redirected automatically, please
-      <a href="/index.html" aria-label="Go to home page">
-        click here to go to the home page</a>.
-    </p>
-  </div>
+  <h1>404 Not Found</h1>
+  <p>We're sorry, but the page you're looking for cannot be found.</p>
+  <p>You will be redirected to the home page in <span id="countdown">10</span> seconds.</p>
+  <p>If you are not redirected automatically, please
+    <a href="/index.html" aria-label="Go to home page">
+      click here to go to the home page</a>.
+  </p>
 </main>
 
 <script>
@@ -131,6 +136,12 @@
         countdownElement.classList.add('animate');
     }
   }, 1000);
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Shift') {
+      clearInterval(intervalId); // Stop the countdown
+    }
+  });
 </script>
 </body>
 </html>
