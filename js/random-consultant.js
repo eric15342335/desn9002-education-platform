@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Simulate smooth loading with incremental progress
         let progress = 0;
         const progressInterval = setInterval(() => {
-            progress += Math.floor(Math.random() * 10) + 3; // Increment by 5-14
+            progress += Math.floor(Math.random() * 10) + 3; // Increment by 3-12
             if (progress > 100) progress = 100;
             if (progress === 100) {
                 clearInterval(progressInterval);
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100); // Update every 100ms for smoother progress
     }
 
-    function generateConsultants(gender, experience, university, subject, country) {
+    function generateConsultants(sector, industry, gender, experience, university, subject, country) {
         const consultantsList = document.getElementById("consultants");
         // Generate random consultants
         for (let i = 0; i < 6; i++) {
@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const randomGender = gender === "" ? (Math.random() > 0.5 ? "Male" : "Female") : gender;
             const randomExperience = Math.random() > 0.5 ? "Student" : `${Math.floor(Math.random() * 4) + 1} years`; // 1-4 years or Student
             const randomPrice = userType === "teacher" ? Math.floor(Math.random() * 1901) + 100 : Math.floor(Math.random() * 9501) + 50; // Teachers: $100-$2000, Students: $50-$9550
-    
+
             // Match user criteria
             if (
-                (randomExperience === "Student" || randomExperience.split(' ')[0] >= experience) &&
+                (randomExperience === "Student" || parseInt(randomExperience) >= experience) &&
                 (university === "" || university === university) &&
                 (subject === "" || subject === subject) &&
                 (country === "" || country === country) &&
@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ) {
                 const consultantCard = document.createElement("div");
                 consultantCard.className = "consultant-card";
+                
                 // Badge for prior education experience
                 if (educationExperience === "Yes") {
                     const badge = document.createElement("div");
@@ -107,29 +108,105 @@ document.addEventListener("DOMContentLoaded", function () {
                     badge.textContent = "✨Prior education experience✨";
                     consultantCard.appendChild(badge);
                 }
+
                 const img = document.createElement("img");
                 img.src = randomGender === "Male" ? 'images/gender/male.png' : 'images/gender/female.png';
                 img.alt = randomGender;
                 consultantCard.appendChild(img);
+
+                const contentDiv = document.createElement("div");
+                contentDiv.className = "consultant-content";
+
                 const name = document.createElement("h3");
                 name.textContent = randomName;
-                consultantCard.appendChild(name);
+                contentDiv.appendChild(name);
+
+                // Create hidden table for details
+                const detailsTable = document.createElement("table");
+                detailsTable.className = "details-table";
+
+                // Experience Row
+                const expRow = document.createElement("tr");
+                const expLabel = document.createElement("td");
+                expLabel.textContent = "Experience:";
+                const expValue = document.createElement("td");
+                expValue.textContent = randomExperience;
+                expRow.appendChild(expLabel);
+                expRow.appendChild(expValue);
+                detailsTable.appendChild(expRow);
+
+                // University Row
+                const uniRow = document.createElement("tr");
+                const uniLabel = document.createElement("td");
+                uniLabel.textContent = "University:";
+                const uniValue = document.createElement("td");
+                uniValue.textContent = university || "N/A";
+                uniRow.appendChild(uniLabel);
+                uniRow.appendChild(uniValue);
+                detailsTable.appendChild(uniRow);
+
+                // Exam Row
+                const examRow = document.createElement("tr");
+                const examLabel = document.createElement("td");
+                examLabel.textContent = "Exam:";
+                const examValue = document.createElement("td");
+                examValue.textContent = document.getElementById("exam").value || "N/A";
+                examRow.appendChild(examLabel);
+                examRow.appendChild(examValue);
+                detailsTable.appendChild(examRow);
+
+                // Subject Row
+                const subjectRow = document.createElement("tr");
+                const subjectLabel = document.createElement("td");
+                subjectLabel.textContent = "Subject:";
+                const subjectValue = document.createElement("td");
+                subjectValue.textContent = subject || "N/A";
+                subjectRow.appendChild(subjectLabel);
+                subjectRow.appendChild(subjectValue);
+                detailsTable.appendChild(subjectRow);
+
+                // Country Row
+                const countryRow = document.createElement("tr");
+                const countryLabel = document.createElement("td");
+                countryLabel.textContent = "Country:";
+                const countryValue = document.createElement("td");
+                countryValue.textContent = country || "N/A";
+                countryRow.appendChild(countryLabel);
+                countryRow.appendChild(countryValue);
+                detailsTable.appendChild(countryRow);
+
+                contentDiv.appendChild(detailsTable);
+
+                // Optionally, you can add visible details here if needed
+                // For example:
+                const visibleDetails = document.createElement("div");
+                visibleDetails.className = "visible-details";
+
                 const experienceP = document.createElement("p");
                 experienceP.textContent = `Experience: ${randomExperience}`;
-                consultantCard.appendChild(experienceP);
-                // Display user-selected information
+                visibleDetails.appendChild(experienceP);
+
                 const universityP = document.createElement("p");
                 universityP.textContent = `University: ${university || "N/A"}`;
-                consultantCard.appendChild(universityP);
+                visibleDetails.appendChild(universityP);
+
                 const examP = document.createElement("p");
                 examP.textContent = `Exam: ${document.getElementById("exam").value || "N/A"}`;
-                consultantCard.appendChild(examP);
+                visibleDetails.appendChild(examP);
+
                 const subjectP = document.createElement("p");
                 subjectP.textContent = `Subject: ${subject || "N/A"}`;
-                consultantCard.appendChild(subjectP);
+                visibleDetails.appendChild(subjectP);
+
                 const countryP = document.createElement("p");
                 countryP.textContent = `Country: ${country || "N/A"}`;
-                consultantCard.appendChild(countryP);
+                visibleDetails.appendChild(countryP);
+
+                contentDiv.appendChild(visibleDetails);
+
+                // Append the content div to the card
+                consultantCard.appendChild(contentDiv);
+
                 if (userType === "teacher") {
                     const likesDiv = document.createElement("div");
                     likesDiv.className = "likes";
@@ -140,8 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const likesText = document.createElement("span");
                     likesText.textContent = `Likes from students: ${Math.floor(Math.random() * 201)}`;
                     likesDiv.appendChild(likesText);
-                    consultantCard.appendChild(likesDiv);
+                    contentDiv.appendChild(likesDiv);
                 }
+
                 const pricingDiv = document.createElement("div");
                 pricingDiv.className = "pricing";
                 const startingPriceBtn = document.createElement("button");
@@ -150,13 +228,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const actionBtn = document.createElement("button");
                 actionBtn.textContent = userType === "student" ? "Chat" : "Contact Now";
                 pricingDiv.appendChild(actionBtn);
-                consultantCard.appendChild(pricingDiv);
+                contentDiv.appendChild(pricingDiv);
+
                 consultantsList.appendChild(consultantCard);
             }
-        }
-        // If no consultants match, display a message
-        if (consultantsList.innerHTML === "") {
-            consultantsList.innerHTML = "<p>No consultants found matching your criteria.</p>";
         }
     }
 

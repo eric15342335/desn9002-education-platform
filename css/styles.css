@@ -1,5 +1,5 @@
 @font-face {
-    src: url(/font/InterVariable.woff2) format('woff2');
+    src: url(https://eric15342335.github.io/desn9002-education-platform/font/InterVariable.woff2) format('woff2');
     font-family: 'Inter';
     font-style: normal;
     font-weight: 100 900;
@@ -157,67 +157,82 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
 .consultants {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+    flex-wrap: wrap; /* Allow wrapping if cards overflow horizontally */
+    gap: 1.5em; /* Add spacing between cards */
+    justify-content: flex-start; /* Align cards to the left */
+    padding: 1em; /* Add padding inside the container */
 }
 
 .consultant-card {
+    display: flex; /* Added for horizontal alignment */
+    align-items: flex-start; /* Align items at the top */
+    flex: 1 1 calc(30% - 1em); /* Each card takes 30% of the container width minus gaps */
     border: 1px solid #ccc;
     background-color: #fff;
     padding: 15px;
-    flex: 1 1 calc(20% - 1em);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s ease-in-out;
-    max-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    gap: 15px; /* Space between image and content */
 }
 
 .consultant-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Lift slightly on hover */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .consultant-card img {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    border-radius: 50%; /* Rounded profile picture */
+    /* Removed margin-bottom and align-self to fit new layout */
+}
+
+.consultant-card .consultant-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .consultant-card h3 {
-    margin: 0 0 10px 0;
     font-size: 16px;
-    text-align: center;
+    margin: 0 0 10px 0;
+    color: #333;
 }
 
-.consultant-card p {
-    margin: 5px 0;
+.consultant-card .details-table {
+    display: none; /* Hidden table */
+}
+
+.consultant-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.consultant-card table td {
+    padding: 2px 5px;
     font-size: 14px;
-    text-align: center;
-}
-
-.pricing {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    flex-wrap: wrap;
+    color: #555;
 }
 
 .badge {
     background-color: #FFD700; /* Yellow background */
-    border-radius: 10px; /* Rounded corners */
-    padding: 5px 10px; /* Padding for the badge */
-    color: #000; /* Text color */
-    font-weight: bold; /* Bold text */
-    display: inline-block; /* Inline block display */
-    margin-bottom: 10px; /* Space below the badge */
+    color: #000; /* Black text */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block; /* Inline badge for text wrapping */
+}
+
+.pricing {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start; /* Align pricing buttons to the left */
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .pricing button {
@@ -228,6 +243,7 @@ body {
     border-radius: 5px;
     background-color: #f0f0f0;
     transition: background-color 0.3s, color 0.3s;
+    flex: 1 1 auto; /* Allow buttons to grow/shrink */
 }
 
 .pricing button:hover {
@@ -248,6 +264,19 @@ body {
     height: 16px;
     margin-right: 5px;
     border-radius: 50%;
+}
+
+.likes span {
+    display: inline-block;
+}
+
+.consultants-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #007BFF; /* Add a bottom border for section separation */
+    padding-bottom: 0.5em;
 }
 
 /* Add new styles at the bottom */
