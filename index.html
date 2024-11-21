@@ -6,14 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultant Finder</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="favicon" href="favicon.ico">
+    {% include analytics.html %}
     {% seo %}
 </head>
 <body>
     <div class="container">
         <!-- Input Section -->
         <div class="input-section">
-            <h2>Consultant Finder</h2>
+            <h2>Find a <span style="color:blueviolet; font-style: italic;">Consultant</span></h2>
+            <p style="margin: 0; margin-bottom: 1em;">
+                Whether you are a student or a teacher, we can help you find the right consultant for your needs.
+            </p>
             <div class="user-type">
                 <button id="studentButton" class="active" onclick="setUserType('student')">Student</button>
                 <button id="teacherButton" onclick="setUserType('teacher')">Teacher</button>
@@ -96,6 +102,6 @@
         </div>
     </div>
 
-    <script src="random-consultant.js"></script>
+    <script src="js/random-consultant.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
-// random-consultant.js
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
     const names = ["John Doe", "Jane Smith", "Alex Chan", "Emily Wong", "Michael Lee", "Sophia Ng"];
     const sectors = ["Finance", "IT", "Medicine", "Education", "Law", "Marketing", "Engineering", "Human Resources"];
@@ -80,24 +81,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100); // Update every 100ms for smoother progress
     }
 
-    function generateConsultants(sector, industry, gender, experience, university, subject, country) {
+    function generateConsultants(gender, experience, university, subject, country) {
         const consultantsList = document.getElementById("consultants");
-
         // Generate random consultants
         for (let i = 0; i < 6; i++) {
             const randomName = names[Math.floor(Math.random() * names.length)];
             const randomGender = gender === "" ? (Math.random() > 0.5 ? "Male" : "Female") : gender;
-            const randomExperience = Math.floor(Math.random() * 10) + 1; // 1-10 years
-            const randomSector = sectors[Math.floor(Math.random() * sectors.length)];
-            const randomIndustry = industries[Math.floor(Math.random() * industries.length)];
+            const randomExperience = Math.random() > 0.5 ? "Student" : `${Math.floor(Math.random() * 4) + 1} years`; // 1-4 years or Student
             const randomPrice = userType === "teacher" ? Math.floor(Math.random() * 1901) + 100 : Math.floor(Math.random() * 9501) + 50; // Teachers: $100-$2000, Students: $50-$9550
-            const likes = userType === "teacher" ? Math.floor(Math.random() * 201) : 0; // 0-200 likes for teachers
-
+    
             // Match user criteria
             if (
-                (sector === randomSector || sector === "") &&
-                (industry === randomIndustry || industry === "") &&
-                (randomExperience >= experience) &&
+                (randomExperience === "Student" || randomExperience.split(' ')[0] >= experience) &&
                 (university === "" || university === university) &&
                 (subject === "" || subject === subject) &&
                 (country === "" || country === country) &&
@@ -105,53 +100,36 @@ document.addEventListener("DOMContentLoaded", function () {
             ) {
                 const consultantCard = document.createElement("div");
                 consultantCard.className = "consultant-card";
-
                 // Badge for prior education experience
                 if (educationExperience === "Yes") {
                     const badge = document.createElement("div");
                     badge.className = "badge";
-                    badge.textContent = "Prior education experience";
+                    badge.textContent = "✨Prior education experience✨";
                     consultantCard.appendChild(badge);
                 }
-
                 const img = document.createElement("img");
                 img.src = randomGender === "Male" ? 'images/gender/male.png' : 'images/gender/female.png';
                 img.alt = randomGender;
                 consultantCard.appendChild(img);
-
                 const name = document.createElement("h3");
                 name.textContent = randomName;
                 consultantCard.appendChild(name);
-
-                const sectorP = document.createElement("p");
-                sectorP.textContent = `Sector: ${randomSector}`;
-                consultantCard.appendChild(sectorP);
-
-                const industryP = document.createElement("p");
-                industryP.textContent = `Industry: ${randomIndustry}`;
-                consultantCard.appendChild(industryP);
-
                 const experienceP = document.createElement("p");
-                experienceP.textContent = `Experience: ${randomExperience} years`;
+                experienceP.textContent = `Experience: ${randomExperience}`;
                 consultantCard.appendChild(experienceP);
-
                 // Display user-selected information
                 const universityP = document.createElement("p");
                 universityP.textContent = `University: ${university || "N/A"}`;
                 consultantCard.appendChild(universityP);
-
                 const examP = document.createElement("p");
                 examP.textContent = `Exam: ${document.getElementById("exam").value || "N/A"}`;
                 consultantCard.appendChild(examP);
-
                 const subjectP = document.createElement("p");
                 subjectP.textContent = `Subject: ${subject || "N/A"}`;
                 consultantCard.appendChild(subjectP);
-
                 const countryP = document.createElement("p");
                 countryP.textContent = `Country: ${country || "N/A"}`;
                 consultantCard.appendChild(countryP);
-
                 if (userType === "teacher") {
                     const likesDiv = document.createElement("div");
                     likesDiv.className = "likes";
@@ -160,28 +138,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     thumbsUpImg.alt = 'Thumbs Up';
                     likesDiv.appendChild(thumbsUpImg);
                     const likesText = document.createElement("span");
-                    likesText.textContent = `Likes from students: ${likes}`;
+                    likesText.textContent = `Likes from students: ${Math.floor(Math.random() * 201)}`;
                     likesDiv.appendChild(likesText);
                     consultantCard.appendChild(likesDiv);
                 }
-
                 const pricingDiv = document.createElement("div");
                 pricingDiv.className = "pricing";
-
                 const startingPriceBtn = document.createElement("button");
                 startingPriceBtn.textContent = `Base Price: $${randomPrice}`;
                 pricingDiv.appendChild(startingPriceBtn);
-
                 const actionBtn = document.createElement("button");
                 actionBtn.textContent = userType === "student" ? "Chat" : "Contact Now";
                 pricingDiv.appendChild(actionBtn);
-
                 consultantCard.appendChild(pricingDiv);
-
                 consultantsList.appendChild(consultantCard);
             }
         }
-
         // If no consultants match, display a message
         if (consultantsList.innerHTML === "") {
             consultantsList.innerHTML = "<p>No consultants found matching your criteria.</p>";
