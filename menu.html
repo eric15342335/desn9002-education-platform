@@ -1,0 +1,65 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Edbridge</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="favicon" href="https://eric15342335.github.io/desn9002-education-platform/favicon.ico">
+    {% include analytics.html %}
+    {% seo %}
+    <style>
+        body {
+            background-image: url('images/background/hkust-landscape.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            margin: 0.25em;
+        }
+        h2 {
+            margin: 0.25em;
+        }
+        p {
+            margin: 0.25em;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Edbridge</h1>
+        <h2>Building Pathways to Global Success</h2>
+        <p>EdBridge connects global students with Hong Kong's educational opportunities through digital resources, expert matching, and community engagement.</p>
+        <div class="button-container">
+            <button onclick="location.href='index.html'">Consultant Finder</button>
+            <button onclick="location.href='dashboard.html'">Statistics Dashboard</button>
+            <button onclick="location.href='booking.html'">Book an Event</button>
+            <button onclick="openHelpDialog()">Need Assistance?</button>
+        </div>
+        <footer>
+            &copy; 2024 Edbridge
+        </footer>
+    </div>
+
+    <!-- Help Dialog -->
+    <div id="helpDialog" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeHelpDialog()">&times;</span>
+            <h2>About Edbridge</h2>
+            <p>This website connects students and teachers with consultants to meet educational needs.</p>
+        </div>
+    </div>
+
+    <script>
+        function openHelpDialog() {
+            document.getElementById('helpDialog').style.display = 'block';
+        }
+        function closeHelpDialog() {
+            document.getElementById('helpDialog').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
