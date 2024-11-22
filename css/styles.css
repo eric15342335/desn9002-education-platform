@@ -736,6 +736,6 @@ footer {
   }
 
   .consultant-info {
-    height: 100vh;
+    height: auto;
   }
 }
