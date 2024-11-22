@@ -1,7 +1,59 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const names = ["John Doe", "Jane Smith", "Alex Chan", "Emily Wong", "Michael Lee", "Sophia Ng"];
+    const firstNames = [
+        "John", "Jane", "Alex", "Emily", "Michael", "Sophia", "David", "Laura",
+        "Daniel", "Olivia", "Liam", "Emma", "Noah", "Ava", "Ethan", "Isabella",
+        "Mason", "Mia", "Logan", "Charlotte", "James", "Amelia", "Benjamin",
+        "Harper", "Oliver", "Evelyn", "Jacob", "Abigail", "Lucas", "Grace",
+        "William", "Ella", "Henry", "Elizabeth", "Alexander", "Sofia", "Sebastian",
+        "Avery", "Jack", "Scarlett", "Samuel", "Victoria", "Matthew", "Madison",
+        "Joseph", "Lily", "Andrew", "Chloe", "Ryan", "Zoe", "Nathan", "Layla",
+        "Caleb", "Lillian", "Joshua", "Addison", "Dylan", "Natalie"
+    ];
+
+    const lastNames = [
+        "Doe", "Smith", "Chan", "Wong", "Lee", "Ng", "Brown", "Johnson", "Williams",
+        "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
+        "Thompson", "Garcia", "Martinez", "Robinson", "Clark", "Rodriguez",
+        "Lewis", "Walker", "Hall", "Allen", "Young", "King", "Wright", "Scott",
+        "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson",
+        "Baker", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez",
+        "Phillips", "Evans", "Turner", "Diaz", "Parker", "Collins", "Edwards",
+        "Stewart", "Sanchez", "Morris", "Rogers"
+    ];
+
+    const priorEducationExperiences = [
+        "Former Tutorial Center Teacher",
+        "EDB Teacher",
+        "Private Tutor",
+        "University Lecturer",
+        "Online Education Specialist",
+        "Curriculum Developer",
+        "Educational Consultant",
+        "High School Teacher",
+        "Elementary School Instructor",
+        "Special Education Teacher"
+    ];
+
+    const names = [];
+
+    // Combine first and last names to create a larger names array
+    firstNames.forEach(firstName => {
+        lastNames.forEach(lastName => {
+            names.push(`${firstName} ${lastName}`);
+        });
+    });
+
+    // Shuffle the names array to randomize the order
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    shuffle(names);
+
     const sectors = ["Finance", "IT", "Medicine", "Education", "Law", "Marketing", "Engineering", "Human Resources"];
     const industries = [
         "Investment Banking", "Software Development", "Clinical Research", "Higher Education",
@@ -54,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Find Consultants with Smooth Loading
     function findConsultants() {
-        const sector = document.getElementById("sector") ? document.getElementById("sector").value : "";
         const industry = document.getElementById("industry") ? document.getElementById("industry").value : "";
         const gender = document.getElementById("gender") ? document.getElementById("gender").value : "";
         const experience = parseInt(document.getElementById("experience") ? document.getElementById("experience").value : "0") || 0;
@@ -66,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const loader = document.getElementById("loader");
 
         consultantsList.innerHTML = ""; // Clear previous results
-        loader.style.display = "flex";
+        loader.style.display = "flex"; // Show loader
 
         // Simulate smooth loading with incremental progress
         let progress = 0;
@@ -74,164 +125,107 @@ document.addEventListener("DOMContentLoaded", function () {
             progress += Math.floor(Math.random() * 10) + 3; // Increment by 3-12
             if (progress > 100) progress = 100;
             if (progress === 100) {
-                clearInterval(progressInterval);
-                loader.style.display = "none";
-                generateConsultants(sector, industry, gender, experience, university, subject, country);
+                clearInterval(progressInterval); // Stop the progress simulation
+                loader.style.display = "none"; // Hide loader
+                generateConsultants(industry, gender, experience, university, subject, country);
             }
         }, 100); // Update every 100ms for smoother progress
     }
 
-    function generateConsultants(sector, industry, gender, experience, university, subject, country) {
+    // Generate Consultant Cards
+    function generateConsultants(industry, gender, experience, university, subject, country) {
         const consultantsList = document.getElementById("consultants");
+
         // Generate random consultants
         for (let i = 0; i < 6; i++) {
             const randomName = names[Math.floor(Math.random() * names.length)];
             const randomGender = gender === "" ? (Math.random() > 0.5 ? "Male" : "Female") : gender;
             const randomExperience = Math.random() > 0.5 ? "Student" : `${Math.floor(Math.random() * 4) + 1} years`; // 1-4 years or Student
-            const randomPrice = userType === "teacher" ? Math.floor(Math.random() * 3501) + 500 : Math.floor(Math.random() * 501); // Teachers: $500-$4000, Students: $0-$500
+            const randomPrice = userType === "teacher" ? `$${Math.floor(Math.random() * 3501) + 500}` : `$${Math.floor(Math.random() * 501)}`; // Teachers: $500-$4000, Students: $0-$500
 
-            // Match user criteria
-            if (
-                (randomExperience === "Student" || parseInt(randomExperience) >= experience) &&
-                (university === "" || university === university) &&
-                (subject === "" || subject === subject) &&
-                (country === "" || country === country) &&
-                (educationExperience === "" || educationExperience === "Yes" || educationExperience === "No")
-            ) {
-                const consultantCard = document.createElement("div");
-                consultantCard.className = "consultant-card";
-                
-                // Badge for prior education experience
-                if (educationExperience === "Yes") {
-                    const badge = document.createElement("div");
-                    badge.className = "badge";
-                    badge.textContent = "✨Prior education experience✨";
-                    consultantCard.appendChild(badge);
-                }
+            // Create card container
+            const card = document.createElement("div");
+            card.className = "consultant-card";
 
-                const img = document.createElement("img");
-                img.src = randomGender === "Male" ? 'images/gender/male.png' : 'images/gender/female.png';
-                img.alt = randomGender;
-                consultantCard.appendChild(img);
-
-                const contentDiv = document.createElement("div");
-                contentDiv.className = "consultant-content";
-
-                const name = document.createElement("h3");
-                name.textContent = randomName;
-                contentDiv.appendChild(name);
-
-                // Create hidden table for details
-                const detailsTable = document.createElement("table");
-                detailsTable.className = "details-table";
-
-                // Experience Row
-                const expRow = document.createElement("tr");
-                const expLabel = document.createElement("td");
-                expLabel.textContent = "Experience:";
-                const expValue = document.createElement("td");
-                expValue.textContent = randomExperience;
-                expRow.appendChild(expLabel);
-                expRow.appendChild(expValue);
-                detailsTable.appendChild(expRow);
-
-                // University Row
-                const uniRow = document.createElement("tr");
-                const uniLabel = document.createElement("td");
-                uniLabel.textContent = "University:";
-                const uniValue = document.createElement("td");
-                uniValue.textContent = university || "N/A";
-                uniRow.appendChild(uniLabel);
-                uniRow.appendChild(uniValue);
-                detailsTable.appendChild(uniRow);
-
-                // Exam Row
-                const examRow = document.createElement("tr");
-                const examLabel = document.createElement("td");
-                examLabel.textContent = "Exam:";
-                const examValue = document.createElement("td");
-                examValue.textContent = document.getElementById("exam").value || "N/A";
-                examRow.appendChild(examLabel);
-                examRow.appendChild(examValue);
-                detailsTable.appendChild(examRow);
-
-                // Subject Row
-                const subjectRow = document.createElement("tr");
-                const subjectLabel = document.createElement("td");
-                subjectLabel.textContent = "Subject:";
-                const subjectValue = document.createElement("td");
-                subjectValue.textContent = subject || "N/A";
-                subjectRow.appendChild(subjectLabel);
-                subjectRow.appendChild(subjectValue);
-                detailsTable.appendChild(subjectRow);
-
-                // Country Row
-                const countryRow = document.createElement("tr");
-                const countryLabel = document.createElement("td");
-                countryLabel.textContent = "Country:";
-                const countryValue = document.createElement("td");
-                countryValue.textContent = country || "N/A";
-                countryRow.appendChild(countryLabel);
-                countryRow.appendChild(countryValue);
-                detailsTable.appendChild(countryRow);
-
-                contentDiv.appendChild(detailsTable);
-
-                // Optionally, you can add visible details here if needed
-                // For example:
-                const visibleDetails = document.createElement("div");
-                visibleDetails.className = "visible-details";
-
-                const experienceP = document.createElement("p");
-                experienceP.textContent = `Experience: ${randomExperience}`;
-                visibleDetails.appendChild(experienceP);
-
-                const universityP = document.createElement("p");
-                universityP.textContent = `University: ${university || "N/A"}`;
-                visibleDetails.appendChild(universityP);
-
-                const examP = document.createElement("p");
-                examP.textContent = `Exam: ${document.getElementById("exam").value || "N/A"}`;
-                visibleDetails.appendChild(examP);
-
-                const subjectP = document.createElement("p");
-                subjectP.textContent = `Subject: ${subject || "N/A"}`;
-                visibleDetails.appendChild(subjectP);
-
-                const countryP = document.createElement("p");
-                countryP.textContent = `Country: ${country || "N/A"}`;
-                visibleDetails.appendChild(countryP);
-
-                contentDiv.appendChild(visibleDetails);
-
-                // Append the content div to the card
-                consultantCard.appendChild(contentDiv);
-
-                if (userType === "teacher") {
-                    const likesDiv = document.createElement("div");
-                    likesDiv.className = "likes";
-                    const thumbsUpImg = document.createElement("img");
-                    thumbsUpImg.src = 'images/profile/thumbsup.png';
-                    thumbsUpImg.alt = 'Thumbs Up';
-                    likesDiv.appendChild(thumbsUpImg);
-                    const likesText = document.createElement("span");
-                    likesText.textContent = `Likes from students: ${Math.floor(Math.random() * 201)}`;
-                    likesDiv.appendChild(likesText);
-                    contentDiv.appendChild(likesDiv);
-                }
-
-                const pricingDiv = document.createElement("div");
-                pricingDiv.className = "pricing";
-                const startingPriceBtn = document.createElement("button");
-                startingPriceBtn.textContent = `Base Price: $${randomPrice}`;
-                pricingDiv.appendChild(startingPriceBtn);
-                const actionBtn = document.createElement("button");
-                actionBtn.textContent = userType === "student" ? "Chat" : "Contact Now";
-                pricingDiv.appendChild(actionBtn);
-                contentDiv.appendChild(pricingDiv);
-
-                consultantsList.appendChild(consultantCard);
+            // Add badge if prior education experience exists
+            if (educationExperience === "Yes") {
+                // Add details on prior education experience
+                const priorExperience = priorEducationExperiences[Math.floor(Math.random() * priorEducationExperiences.length)];
+                const badge = document.createElement("div");
+                badge.className = "badge";
+                badge.textContent = "✨ Prior education experience ✨" + priorExperience;
+                card.appendChild(badge);
             }
+
+            // Info container
+            const infoContainer = document.createElement("div");
+            infoContainer.className = "info-container";
+
+            // Add gender image
+            const genderImage = document.createElement("img");
+            genderImage.className = "gender-image";
+            genderImage.src =
+                randomGender === "Male"
+                    ? "images/gender/male.png"
+                    : "images/gender/female.png"; // Replace with actual image paths if available
+            genderImage.alt = randomGender;
+            infoContainer.appendChild(genderImage);
+
+            // Consultant information
+            const info = document.createElement("div");
+            info.className = "info";
+
+            const name = document.createElement("h3");
+            name.className = "name";
+            name.textContent = randomName;
+            info.appendChild(name);
+
+            const details = [
+                `Experience: ${randomExperience}`,
+                `University: ${university || "N/A"}`,
+                `Exam: ${document.getElementById("exam").value || "N/A"}`,
+                `Subject: ${subject || "N/A"}`,
+                `Country: ${country || "N/A"}`
+            ];
+
+            details.forEach(detail => {
+                const p = document.createElement("p");
+                p.className = "details";
+                p.textContent = detail;
+                info.appendChild(p);
+            });
+
+            infoContainer.appendChild(info);
+            card.appendChild(infoContainer);
+
+            if (userType === "teacher") {
+                const likesDiv = document.createElement("div");
+                likesDiv.className = "likes";
+                const thumbsUpImg = document.createElement("img");
+                thumbsUpImg.src = 'images/profile/thumbsup.png';
+                thumbsUpImg.alt = 'Thumbs Up';
+                likesDiv.appendChild(thumbsUpImg);
+                const likesText = document.createElement("span");
+                likesText.textContent = `Likes from students: ${Math.floor(Math.random() * 201)}`;
+                likesDiv.appendChild(likesText);
+                card.appendChild(likesDiv);
+            }
+            // Pricing buttons
+            const pricing = document.createElement("div");
+            pricing.className = "pricing";
+
+            const priceButton = document.createElement("button");
+            priceButton.className = "price";
+            priceButton.textContent = `Base Price: ${randomPrice}`;
+            pricing.appendChild(priceButton);
+
+            const actionButton = document.createElement("button");
+            actionButton.className = "action";
+            actionButton.textContent = userType === "teacher" ? "Contact Now" : "Chat";
+            pricing.appendChild(actionButton);
+
+            card.appendChild(pricing);
+            consultantsList.appendChild(card);
         }
     }
 
@@ -239,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setUserType('student');
     setEducationExperience('Yes');
 
+    // Expose functions to global scope for use in HTML
     window.setUserType = setUserType;
     window.setEducationExperience = setEducationExperience;
     window.findConsultants = findConsultants;

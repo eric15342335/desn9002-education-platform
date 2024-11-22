@@ -1,456 +1,483 @@
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    overflow: hidden;
+  font-family: "Inter", -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  overflow: hidden;
 }
 
 .container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .input-section {
-    flex: 0 0 35%;
-    background-color: #f0f8ff; /* Light blue background */
-    padding: 1em;
-    border-right: 1px solid #ccc;
-    box-sizing: border-box;
-    overflow-y: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  flex: 0 0 35%;
+  background-color: #f0f8ff; /* Light blue background */
+  padding: 1em;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .input-section h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .user-type {
-    display: flex;
-    margin-bottom: 1em;
+  display: flex;
+  margin-bottom: 1em;
 }
 
 .user-type button {
-    flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .user-type button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .user-type button.active {
-    background-color: #007BFF;
-    color: #fff;
+  background-color: #007bff;
+  color: #fff;
 }
 
 .inputs label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .inputs select,
 .inputs input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .education-experience {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .education-experience button {
-    flex: 1;
-    padding: 10px;
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+  flex: 1;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .education-experience button.active {
-    background-color: #007BFF;
-    color: #fff;
+  background-color: #007bff;
+  color: #fff;
 }
 
 .inputs button#submit {
-    display: block;
-    margin: 0 auto;
-    padding: 0.7em;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 1em;
-    text-align: center;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+  padding: 0.7em;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 1em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .inputs button#submit:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .footer {
-    text-align: center;
-    margin-top: 1em;
-    font-size: 14px;
-    color: #555;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 14px;
+  color: #555;
 }
 
 .display-section {
-    flex: 1;
-    background-color: #f0f8ff; /* Light blue background */
-    padding: 17px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1em;
-    position: relative;
+  flex: 1;
+  background-color: #f0f8ff; /* Light blue background */
+  padding: 17px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1em;
+  position: relative;
 }
 
 .spinner {
-    position: absolute;
-    top: 40%;
-    left: 45%;
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #007BFF;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s ease-in-out infinite;
-    margin-bottom: 10px; /* Add margin to separate from progress text */
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007bff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .consultants {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping if cards overflow horizontally */
-    gap: 1.5em; /* Add spacing between cards */
-    justify-content: flex-start; /* Align cards to the left */
-    padding: 1em; /* Add padding inside the container */
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if cards overflow horizontally */
+  gap: 1.5em; /* Add spacing between cards */
+  justify-content: flex-start; /* Align cards to the left */
+  padding: 1em;
 }
 
 .consultant-card {
-    display: flex; /* Added for horizontal alignment */
-    align-items: flex-start; /* Align items at the top */
-    flex: 1 1 calc(30% - 1em); /* Each card takes 30% of the container width minus gaps */
-    border: 1px solid #ccc;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    gap: 15px; /* Space between image and content */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px auto;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .consultant-card:hover {
-    transform: translateY(-5px); /* Lift slightly on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02); /* Slight zoom effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
 }
 
 .consultant-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Rounded profile picture */
-    /* Removed margin-bottom and align-self to fit new layout */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Rounded profile picture */
 }
 
 .consultant-card .consultant-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .consultant-card h3 {
-    font-size: 16px;
-    margin: 0 0 10px 0;
-    color: #333;
-}
-
-.consultant-card .details-table {
-    display: none; /* Hidden table */
-}
-
-.consultant-card table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.consultant-card table td {
-    padding: 2px 5px;
-    font-size: 14px;
-    color: #555;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  color: #333;
 }
 
 .badge {
-    background-color: #FFD700; /* Yellow background */
-    color: #000; /* Black text */
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: inline-block; /* Inline badge for text wrapping */
+  background-color: #ffeeba;
+  color: #856404;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .pricing {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start; /* Align pricing buttons to the left */
-    margin-top: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start; /* Align pricing buttons to the left */
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .pricing button {
-    padding: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    transition: background-color 0.3s, color 0.3s;
-    flex: 1 1 auto; /* Allow buttons to grow/shrink */
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s, color 0.3s;
+  flex: 1 1 auto; /* Allow buttons to grow/shrink */
 }
 
 .pricing button:hover {
-    background-color: #007BFF;
-    color: #fff;
+  background-color: #007bff;
+  color: #fff;
 }
 
 .likes {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #555;
-    margin-top: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
 }
 
 .likes img {
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border-radius: 50%;
 }
 
 .likes span {
-    display: inline-block;
+  display: inline-block;
 }
 
 .consultants-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1em;
-    border-bottom: 2px solid #007BFF; /* Add a bottom border for section separation */
-    padding-bottom: 0.5em;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #007bff; /* Add a bottom border for section separation */
+  padding-bottom: 0.5em;
 }
 
-/* Add new styles at the bottom */
 .notification-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .notification {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .notification:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .notification-text {
-    font-size: 14px;
-    font-weight: normal;
+  font-size: 14px;
 }
 
 .notification-button {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .notification-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-/* [css/styles.css](css/styles.css) */
-
 .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16px;
-    margin: 10px 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stat-title {
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .stat-number {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007BFF;
-    margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px;
 }
 
 .stat-chart {
-    max-width: 100%;
-    height: 200px;
+  max-width: 100%;
+  height: 200px;
 }
 
 .menu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
-    margin: 3vh auto; /* Centers the container with vertical spacing */
-    width: 80%; /* Adjust the width as needed */
-    max-width: 600px; /* Sets a maximum width */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  margin: 3vh auto;
+  width: 80%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
 }
 
 .button-container button {
-    padding: 1em 2em;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-    background-color: #007BFF;
-    color: #fff;
-    transition: background-color 0.3s;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s;
 }
 
 .button-container button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 footer {
-    margin-top: 3em;
-    font-size: 0.9em;
-    color: #555;
+  margin-top: 3em;
+  font-size: 0.9em;
+  color: #555;
 }
 
-/* Modal styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 2em;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 0.5em;
-    position: relative;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2em;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 0.5em;
+  position: relative;
 }
 
 .close-button {
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    font-size: 1.5em;
-    cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-/* Media query for mobile devices */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Stack sections vertically */
-        height: auto; /* Allow container to adjust to content height */
-    }
+  .container {
+    flex-direction: column; /* Stack sections vertically */
+    height: auto; /* Allow container to adjust to content height */
+  }
 
-    .input-section,
-    .display-section {
-        flex: none; /* Disable flex grow/shrink */
-        width: 100%; /* Full width on mobile */
-        margin: 0 auto; /* Center if necessary */
-    }
+  .input-section,
+  .display-section {
+    flex: none; /* Disable flex grow/shrink */
+    width: 100%; /* Full width on mobile */
+    margin: 0 auto; /* Center if necessary */
+  }
 
-    /* Ensure the input-section appears first */
-    .input-section {
-        order: 1;
-    }
+  .input-section {
+    order: 1;
+  }
 
-    /* Ensure the display-section appears second */
-    .display-section {
-        order: 2;
-    }
+  .display-section {
+    order: 2;
+  }
 
-    /* Adjust body overflow to allow scrolling */
-    body {
-        overflow-x: hidden; /* Hide horizontal overflow */
-        overflow-y: auto;   /* Enable vertical scrolling */
-    }
+  body {
+    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+}
+
+/* Info Container Styling */
+.info-container {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Image on the left, text on the right */
+  gap: 15px; /* Space between the image and text */
+  align-items: center; /* Vertically center the content */
+}
+
+/* Consultant Information */
+.info {
+  display: flex;
+  flex-direction: column; /* Stack text details vertically */
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.details {
+  margin: 3px 0;
+  color: #555;
+}
+
+/* Pricing Buttons */
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pricing button.price {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.pricing button.action {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.pricing button:hover.price {
+  background-color: #c3e6cb;
+}
+
+.pricing button:hover.action {
+  background-color: #b8daff;
 }
