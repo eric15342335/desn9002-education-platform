@@ -14,9 +14,10 @@ body {
 }
 
 .input-section {
-  flex: 0 0 35%;
+  flex: 0 0 30%;
   background-color: #f0f8ff; /* Light blue background */
-  padding: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
   border-right: 1px solid #ccc;
   box-sizing: border-box;
   overflow-y: auto;
@@ -25,7 +26,6 @@ body {
   margin: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .input-section h2 {
@@ -480,4 +480,202 @@ footer {
 
 .pricing button:hover.action {
   background-color: #b8daff;
+}
+/* Existing Styles ... */
+
+/* Rounded Consultant Image */
+.rounded-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Ensures the image is fully rounded */
+  object-fit: cover;
+  margin-bottom: 1em;
+}
+
+/* Summary and More Info */
+.summary {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.toggle-button:hover {
+  text-decoration: underline;
+}
+
+.more-info.hidden {
+  display: none;
+}
+
+/* Bottom Bar Styling */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Cost Estimate Styling */
+.cost-estimate {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Confirmation Button */
+.confirmation-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745; /* Green */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.confirmation-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Save Draft Button */
+.save-draft-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; /* White */
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.save-draft-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Enhanced Sliders with Animation */
+.slider-container input[type="range"] {
+  width: 90%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.3s;
+}
+
+.slider-container span {
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.slider-container input[type="range"]:hover {
+  opacity: 1;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb:hover {
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+.slider-container input[type="range"]::-moz-range-thumb:hover {
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+/* Full-Width Text Inputs */
+.input-container.full-width textarea {
+  width: 100%;
+  padding: 10px;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-container.full-width textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .action-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .fixed-button {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .cost-estimate {
+    bottom: 15px;
+    left: 15px;
+    font-size: 16px;
+  }
+
+  .rounded-image {
+    width: 120px;
+    height: 120px;
+  }
 }

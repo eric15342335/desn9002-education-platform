@@ -1,0 +1,158 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Book an Event | Edbridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="https://eric15342335.github.io/desn9002-education-platform/favicon.ico">
+    {% include analytics.html %}
+    {% seo %}
+</head>
+<body>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section inputs">
+            <h1>Edbridge Event Consultation</h1>
+            <h2>Book an Event with our <span style="color:blueviolet; font-style: italic;">Consultant</span></h2>
+            <p style="margin: 0; margin-bottom: 1em;">
+                Whether you are planning a workshop or a seminar, we can help you book the right consultant for your teaching needs.
+            </p>
+            
+            <!-- Event Participants Slider -->
+            <div class="slider-container">
+                <label for="participantsSlider">Event Participants (10-1000+)</label><br>
+                <input type="range" id="participantsSlider" min="10" max="1000" value="50" oninput="updateCost()" /><br>
+                <span id="participantsValue">50</span>
+            </div>
+
+            <!-- Workshop Duration Slider -->
+            <div class="slider-container">
+                <label for="durationSlider">Workshop Duration (1-6+ hours)</label><br>
+                <input type="range" id="durationSlider" min="1" max="6" value="2" oninput="updateCost()" /><br>
+                <span id="durationValue">2 hour(s)</span>
+            </div>
+
+            <!-- Location Picker -->
+            <div class="slider-container">
+                <label for="location">Where will the event be hosted?</label><br>
+                <select id="location" onchange="updateCost()">
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Macau">Macau</option>
+                    <option value="China">China</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Korea">Korea</option>
+                    <option value="UK">UK</option>
+                    <option value="Europe">Europe</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="South America">South America</option>
+                    <option value="Africa">Africa</option>
+                </select>
+            </div>
+            <!--
+            <div class="input-container full-width">
+                <label for="eventType">Describe the type of event:</label><br>
+                <textarea id="eventType" rows="3" placeholder="e.g., Workshop on Digital Literacy"></textarea>
+            </div>
+
+            <div class="input-container full-width">
+                <label for="additionalInfo">Additional Information:</label><br>
+                <textarea id="additionalInfo" rows="3" placeholder="Any special requests or notes"></textarea>
+            </div>-->
+        </div>
+
+        <!-- Display Section -->
+        <div class="display-section">
+            <!-- Consultant Information -->
+            <div class="consultant-info">
+                <img src="images/consultant/consultant.jpg" alt="Consultant Profile" class="rounded-image" />
+                <h2 id="consultantName">Emily J. Wilson, Ed.D.</h2>
+                <h3>Education Sector Consultant & Strategic Innovation Advisor</h3>
+                <p>Location: New York, USA (Serving clients globally)</p>
+
+                <div class="summary">
+                    <h4>About Emily:</h4>
+                    <p>
+                        Dedicated to transforming educational landscapes, Dr. Emily J. Wilson is a seasoned education sector consultant with over a decade of experience in driving innovation and policy development across various educational institutions worldwide.
+                    </p>
+                    <button class="toggle-button" onclick="toggleMore()">Show More</button>
+                    <div id="moreInfo" class="more-info hidden">
+                        <p>Her expertise spans from K-12 and higher education to vocational training and ed-tech solutions, with a focus on inclusivity, digital literacy, and future-ready skill development.</p>
+
+                        <h4>Key Areas of Expertise:</h4>
+                        <ul>
+                            <li><strong>Strategic Planning:</strong> Crafting and implementing tailored growth strategies for educational institutions and ed-tech startups.</li>
+                            <li><strong>Curriculum Design & Reform:</strong> Developing and integrating innovative, outcome-based curricula that meet the demands of the 21st century.</li>
+                            <li><strong>Digital Transformation:</strong> Advising on the effective integration of technology to enhance teaching, learning, and operational efficiencies.</li>
+                            <li><strong>Policy Development & Advocacy:</strong> Collaborating with governments and NGOs to formulate and advocate for education policies that promote equity and excellence.</li>
+                            <li><strong>Change Management & Leadership Development:</strong> Empowering educational leaders with the skills necessary to navigate and lead transformative change.</li>
+                        </ul>
+
+                        <h4>Professional Background:</h4>
+                        <ul>
+                            <li><strong>Education Sector Consultant (2018 - Present)</strong>
+                                <ul>
+                                    <li>Successfully guided the digital transformation of a national school system in [Country], impacting over 5,000 schools.</li>
+                                    <li>Developed a futuristic STEM curriculum for a leading private school chain in [Region], resulting in a 40% increase in student interest in STEM fields.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Director of Innovation, XYZ University (2015 - 2018)</strong>
+                                <ul>
+                                    <li>Spearheaded the launch of the university's first fully online degree programs, achieving a 25% enrollment increase within the first year.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Educational Policy Advisor, [Government/NGO Name] (2012 - 2015)</strong>
+                                <ul>
+                                    <li>Contributed to the drafting of the national education policy, with a special focus on inclusivity and accessibility.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>Education & Credentials:</h4>
+                        <ul>
+                            <li>Doctor of Education (Ed.D.) in Educational Leadership, Harvard University, 2011</li>
+                            <li>Master of Science in Education Policy, Stanford University, 2008</li>
+                            <li>Bachelor of Arts in Education, University of California, Berkeley, 2006</li>
+                        </ul>
+
+                        <h4>Professional Memberships & Awards:</h4>
+                        <ul>
+                            <li>Member, American Educational Research Association (AERA)</li>
+                            <li>Recipient, Outstanding Contribution to Education Award, 2019</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar for Cost Estimate and Buttons -->
+    <div class="bottom-bar">
+        <!-- Real-Time Cost Estimate -->
+        <div class="cost-estimate">
+            <span id="costEstimate">Estimated Cost: $100</span>
+        </div>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="save-draft-button" id="saveDraft">Save Draft</button>
+            <button class="confirmation-button" id="confirmButton">Confirm</button>
+        </div>
+    </div>
+
+    <script src="js/random-consultant.js"></script>
+    <script src="js/booking.js"></script>
+    <script>
+        function toggleMore() {
+            const moreInfo = document.getElementById('moreInfo');
+            const toggleButton = document.querySelector('.toggle-button');
+            moreInfo.classList.toggle('hidden');
+            toggleButton.textContent = moreInfo.classList.contains('hidden') ? 'Show More' : 'Show Less';
+        }
+    </script>
+</body>
+</html>
