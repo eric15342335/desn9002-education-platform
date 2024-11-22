@@ -347,3 +347,35 @@ body {
     max-width: 100%;
     height: 200px;
 }
+
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack sections vertically */
+        height: auto; /* Allow container to adjust to content height */
+    }
+
+    .input-section,
+    .display-section {
+        flex: none; /* Disable flex grow/shrink */
+        width: 100%; /* Full width on mobile */
+        margin: 0 auto; /* Center if necessary */
+    }
+
+    /* Ensure the input-section appears first */
+    .input-section {
+        order: 1;
+    }
+
+    /* Ensure the display-section appears second */
+    .display-section {
+        order: 2;
+    }
+
+    /* Adjust body overflow to allow scrolling */
+    body {
+        overflow-x: hidden; /* Hide horizontal overflow */
+        overflow-y: auto;   /* Enable vertical scrolling */
+    }
+}
