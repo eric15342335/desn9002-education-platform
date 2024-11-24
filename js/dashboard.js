@@ -75,12 +75,12 @@ function getRandomLocation() {
     const weights = [0.5, 0.15, 0.15, 0.1, 0.05, 0.05];
     const random = Math.random();
     let cumulative = 0;
-    for (let i = 0; i < locations.length; i++) {
+    for (let i = 0; i < secondarySchoolsHK.length; i++) {
         cumulative += weights[i];
         if (random < cumulative)
-            return locations[i];
+            return secondarySchoolsHK[i];
     }
-    return locations[locations.length -1];
+    return secondarySchoolsHK[secondarySchoolsHK.length -1];
 }
 
 function getRandomAudience() {
