@@ -1,7 +1,10 @@
 // Random Data Generators
 
 function getRandomName() {
-    const names = ["Alice", "Bob", "Charlie", "Diana", "Ethan"];
+    const names = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George", "Hannah", "Ian", "Julia",
+        "Kevin", "Linda", "Michael", "Nancy", "Oscar", "Pamela", "Quincy", "Rachel", "Steve", "Tina",
+        "Ursula", "Victor", "Wendy", "Xavier", "Yvonne", "Zack"
+    ];
     return names[Math.floor(Math.random() * names.length)];
 }
 
@@ -16,7 +19,59 @@ function getRandomEvent() {
 }
 
 function getRandomLocation() {
-    const locations = ["Hong Kong", "Macau", "Taiwan", "China", "UK", "US"];
+    const secondarySchoolsHK = [
+    "Island School",
+    "Hong Kong Academy",
+    "King's College",
+    "Lok Sin Tong Leung Kau Kui College",
+    "Sacred Heart Canossian College",
+    "St. Clare's Girls' School",
+    "St. Joseph's College",
+    "St. Louis School",
+    "St. Paul's Co-educational College",
+    "St. Paul's College",
+    "St. Stephen's Church College",
+    "St. Stephen's Girls' College",
+    "Ying Wa Girls' School",
+    "Raimondi College",
+    "Belilios Public School",
+    "Canossa College",
+    "Caritas Chai Wan Marden Foundation Secondary School",
+    "Cheung Chuk Shan College",
+    "The Chinese Foundation Secondary School",
+    "Chinese International School",
+    "Chong Gene Hang College",
+    "Clementi Secondary School",
+    "CNEC Lau Wing Sang Secondary School",
+    "Cognitio College (Hong Kong)",
+    "Delia School",
+    "Diocesan Boys' School",
+    "Diocesan Girls' School",
+    "Good Hope School",
+    "Harrow International School",
+    "Heep Yunn School",
+    "Saint Mary Canossian College",
+    "Maryknoll Convent School (Secondary Section)",
+    "La Salle College",
+    "Queen's College",
+    "Hong Kong Taoist Association Tang Hin Memorial Secondary School",
+    "St. Paul's Convent School (Secondary Section)",
+    "SKH Tsang Shiu Tim Secondary School",
+    "Christian Alliance International School",
+    "Sear Rogers International School",
+    "Concordia International School Hong Kong",
+    "St. Margaret's Co-educational English Secondary and Primary School",
+    "La Salle Primary School",
+    "Pun U Association Wah Yan Primary School",
+    "Caritas Lok Yi School",
+    "Pui Ching Middle School",
+    "Holy Trinity College",
+    "SKH Lam Woo Memorial Secondary School",
+    "Hong Kong Chinese Women's Club College",
+    "Po Leung Kuk No. 1 W. H. Cheung College",
+    "Po Leung Kuk Tang Yuk Tien College",
+    "Tsuen Wan Government Secondary School"
+    ];
     const weights = [0.5, 0.15, 0.15, 0.1, 0.05, 0.05];
     const random = Math.random();
     let cumulative = 0;
