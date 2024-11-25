@@ -10,15 +10,9 @@ function updateCost() {
     document.getElementById('participantsValue').textContent = participants;
     document.getElementById('durationValue').textContent = duration + " hours";
 
-    // Pricing logic:
-    // Base price is $100
-    // Each participant adds $1
-    // Each hour adds $50
-    // Different locations have different multipliers
-
-    let basePrice = 100;
-    let participantCost = participants * 1; // $1 per participant
-    let durationCost = duration * 50; // $50 per hour
+    let basePrice = 30000;
+    let participantCost = participants * 100;
+    let durationCost = duration * 500;
 
     // Location-based multiplier
     let locationMultiplier = 1;
@@ -37,7 +31,7 @@ function updateCost() {
         "Africa": 1.2
     };
 
-    if (locationMultipliers.hasOwnProperty(location)) {
+    if (Object.prototype.hasOwnProperty.call(locationMultipliers, location)) {
         locationMultiplier = locationMultipliers[location];
     }
 
