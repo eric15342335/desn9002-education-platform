@@ -10,9 +10,9 @@ function updateCost() {
     document.getElementById('participantsValue').textContent = participants;
     document.getElementById('durationValue').textContent = duration + " hours";
 
-    let basePrice = 30000;
-    let participantCost = participants * 100;
-    let durationCost = duration * 500;
+    let basePrice = 45000;
+    let participantCost = participants * 150;
+    let durationCost = duration * 600;
 
     // Location-based multiplier
     let locationMultiplier = 1;
