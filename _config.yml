@@ -4,7 +4,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-title: Eric's GitHub Pages
+title: Edbridge | Building Pathways to Global Success | Connecting global students with Hong Kong's educational opportunities through digital resources, expert matching, and community engagement.
 
 author:
   name: Cheng Ho Ming, Eric
@@ -26,8 +26,6 @@ social:
 twitter:
   username: eric15342335
   card: summary
-
-logo: /assets/images/meguru-big.png
 
 webmaster_verifications:
   google: nKhf3k5Ab3PBY31uGwwA-9csMaoM8j2T96heECb4RuM

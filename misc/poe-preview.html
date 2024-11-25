@@ -1,18 +1,21 @@
 ---
 permalink: /poe-preview.html
+title: Redirecting...
 ---
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=index.html">
-    {% include analytics.html %}
+    <meta http-equiv="refresh" content="1; url=menu.html">
+    {% include head.html %}
     {% seo %}
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="index.html">link</a>.</p>
+    <header>
+        <h1>Redirecting...</h1>
+        <p>If you are not redirected automatically, follow this <a href="menu.html">link</a>.</p>
+    </header>
     <script>
-        window.location.href = "index.html";
+        window.location.href = "menu.html";
     </script>
 </body>
 </html>
