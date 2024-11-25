@@ -5,7 +5,7 @@
     "theme_color": "#2277ee",
     "icons": [
         {
-            "src": "/images/company/edbridge.png",
+            "src": "../images/company/edbridge.png",
             "sizes": "192x192",
             "type": "image/png"
         }
