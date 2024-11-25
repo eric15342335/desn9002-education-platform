@@ -1,17 +1,12 @@
 {
-    "name": "Eric's Github Pages",
-    "start_url": "/",
+    "name": "Edbridge | Building Pathways to Global Success",
+    "start_url": "/desn9002-education-platform/menu",
     "display": "standalone",
     "theme_color": "#2277ee",
     "icons": [
         {
-            "src": "/assets/images/meguru-small.png",
+            "src": "/images/company/edbridge.png",
             "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/assets/images/meguru-big.png",
-            "sizes": "512x512",
             "type": "image/png"
         }
     ]
