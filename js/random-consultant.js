@@ -54,11 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     shuffle(names);
 
-    const sectors = ["Finance", "IT", "Medicine", "Education", "Law", "Marketing", "Engineering", "Human Resources"];
-    const industries = [
-        "Investment Banking", "Software Development", "Clinical Research", "Higher Education",
-        "Corporate Law", "Digital Marketing", "Civil Engineering", "Talent Acquisition"
-    ];
     let educationExperience = "";
     let userType = "student";
 
@@ -222,6 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const actionButton = document.createElement("button");
             actionButton.className = "action";
             actionButton.textContent = userType === "teacher" ? "Contact Now" : "Chat";
+            // Redirect to booking page when "Contact Now" is clicked
+            actionButton.onclick = function () {
+                window.location.href = "booking.html";
+            }
             pricing.appendChild(actionButton);
 
             card.appendChild(pricing);

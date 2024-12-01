@@ -4,14 +4,13 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-title: Edbridge - Building Pathways to Global Success - Connecting global students with Hong Kong's educational opportunities through digital resources, expert matching, and community engagement.
+title: Edbridge \| Building Pathways to Global Success
+description: "Edbridge education consultant: Connecting global students with Hong Kong's educational opportunities through digital resources, expert matching, and community engagement."
 
 author:
   name: Cheng Ho Ming, Eric
   email: eric310@connect.hku.hk
   url: https://eric15342335.github.io/desn9002-education-platform
-  github: eric15342335
-  twitter: eric15342335
 
 social:
   name: eric15342335
